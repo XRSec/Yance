@@ -1,0 +1,41 @@
+# Private runtime data
+local-data/
+wechat_export/
+
+# Machine-local configuration and credentials
+.env
+*.env
+.env.*
+!.env.example
+**/local.properties
+*.keystore
+*.jks
+*.p12
+*.mobileprovision
+*.key
+*.pem
+
+# Build and dependency output
+**/.build/
+**/build/
+**/node_modules/
+**/.gradle/
+**/.idea/
+**/DerivedData/
+**/dist/
+**/coverage/
+**/__pycache__/
+**/.pytest_cache/
+
+# Runtime artifacts
+*.log
+*.db
+*.sqlite
+*.sqlite3
+*.jsonl
+
+# Local tooling and OS files
+.pi/
+.pi-lens/
+.DS_Store
+*.xcuserstate

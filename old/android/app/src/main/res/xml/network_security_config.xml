@@ -1,0 +1,6 @@
+<network-security-config xmlns:tools="http://schemas.android.com/tools">
+    <!-- v1 的 macOS 服务按 API 合同运行在局域网 HTTP；ApiClient 会拒绝公网主机。 -->
+    <base-config
+        cleartextTrafficPermitted="true"
+        tools:ignore="InsecureBaseConfiguration" />
+</network-security-config>

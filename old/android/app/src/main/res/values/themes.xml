@@ -1,0 +1,11 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="Theme.Yance" parent="android:style/Theme.Material.Light.NoActionBar">
+        <item name="android:fontFamily">sans</item>
+        <item name="android:colorAccent">#4F46E5</item>
+        <item name="android:navigationBarColor">#FFFFFF</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:statusBarColor">#FFFFFF</item>
+        <item name="android:windowBackground">#F8FAFC</item>
+        <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
+    </style>
+</resources>
