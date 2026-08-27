@@ -493,7 +493,34 @@ yet-another-lark-mcp 将能力分为 Send-only、Interactive 和 Full，支持�
 
 我们不希望把确认变成一个模型可自行点击的形式步骤，也不会要求项目采用 Yance 架构。如果你们也在建设更完整的个人 Agent，欢迎共同设计身份、关系记忆、渐进授权和自动回复的大脑层。
 
-## 7. 发布顺序与约束
+## 7. 发布记录
+
+以下 Issue 已于 2026-08-27 发布：
+
+| 平台/方向 | 仓库 | Issue |
+| --- | --- | --- |
+| 微信 / 证据 | `ILoveBingLu/CipherTalk` | [#385](https://github.com/ILoveBingLu/CipherTalk/issues/385) |
+| 微信 / 数据 | `LifeArchiveProject/WeChatDataAnalysis` | [#123](https://github.com/LifeArchiveProject/WeChatDataAnalysis/issues/123) |
+| 跨平台分析 | `ChatLab/ChatLab` | [#433](https://github.com/ChatLab/ChatLab/issues/433) |
+| 微信 / Agent 数据源 | `pandorafuture/wx-cli` | [#18](https://github.com/pandorafuture/wx-cli/issues/18) |
+| 微信 / 智能大脑 | `Panther114/Weport` | [#14](https://github.com/Panther114/Weport/issues/14) |
+| 微信 / 可读档案 | `julibeian/wechat-txt-pdf-exporter` | [#1](https://github.com/julibeian/wechat-txt-pdf-exporter/issues/1) |
+| 小红书 | `xpzouying/xiaohongshu-mcp` | [#829](https://github.com/xpzouying/xiaohongshu-mcp/issues/829) |
+| 小红书 | `CNQQC/xhs-mcp` | [#1](https://github.com/CNQQC/xhs-mcp/issues/1) |
+| 小红书 | `Algovate/xhs-mcp` | [#10](https://github.com/Algovate/xhs-mcp/issues/10) |
+| 闲鱼 | `xiaoyushen259-cloud/xianyu-chatmate` | [#2](https://github.com/xiaoyushen259-cloud/xianyu-chatmate/issues/2) |
+| 闲鱼 | `fancyboi999/goofish-cli` | [#27](https://github.com/fancyboi999/goofish-cli/issues/27) |
+| 闲鱼 | `xueshengshuma/XianyuAutoAgent` | [#1](https://github.com/xueshengshuma/XianyuAutoAgent/issues/1) |
+| 闲鱼 | `hui01101/XianyuAutoAgent-Plus` | [#1](https://github.com/hui01101/XianyuAutoAgent-Plus/issues/1) |
+| 钉钉 | `keithyt06/quick-dingtalk-mcp` | [#6](https://github.com/keithyt06/quick-dingtalk-mcp/issues/6) |
+| 钉钉 | `sputnicyoji/dingtalk-workspace` | [#1](https://github.com/sputnicyoji/dingtalk-workspace/issues/1) |
+| 钉钉 | `mwe-support/DingTalkMCP` | [#1](https://github.com/mwe-support/DingTalkMCP/issues/1) |
+| 飞书 | `echowxsy/larkctl-gateway` | [#1](https://github.com/echowxsy/larkctl-gateway/issues/1) |
+| 飞书 | `zjdx10/feishu-mcp-server` | [#1](https://github.com/zjdx10/feishu-mcp-server/issues/1) |
+| 飞书 | `lhhhappy/feishu-channel` | [#2](https://github.com/lhhhappy/feishu-channel/issues/2) |
+| 飞书 | `a4001234567/yet-another-lark-mcp` | [#1](https://github.com/a4001234567/yet-another-lark-mcp/issues/1) |
+
+## 8. 发布顺序与约束
 
 1. 先发布第一批六封定制 Issue，不使用同文群发。
 2. 每封发布前再次检查仓库最新 README、贡献约定、重复 Issue 和许可证。
