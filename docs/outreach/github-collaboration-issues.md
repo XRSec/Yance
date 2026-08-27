@@ -520,6 +520,60 @@ yet-another-lark-mcp 将能力分为 Send-only、Interactive 和 Full，支持�
 | 飞书 | `lhhhappy/feishu-channel` | [#2](https://github.com/lhhhappy/feishu-channel/issues/2) |
 | 飞书 | `a4001234567/yet-another-lark-mcp` | [#1](https://github.com/a4001234567/yet-another-lark-mcp/issues/1) |
 
+### 7.1 后续扩展联络
+
+项目负责人进一步确认向所有相关且开放 Issues 的候选仓库发布。以下 47 封 Issue 于 2026-08-27 发布；每封均按仓库实际能力调整合作重点，并在发布后复核为唯一、开放且正文完整的 Yance Issue。
+
+| 平台/方向 | 仓库 | Issue |
+| --- | --- | --- |
+| 微信 / 关系分析 | `CCSU-HorizonLab/Chrono_Trace` | [#2](https://github.com/CCSU-HorizonLab/Chrono_Trace/issues/2) |
+| 微信 / 可追溯 AI | `Wxw-Gu/TraceMemo` | [#26](https://github.com/Wxw-Gu/TraceMemo/issues/26) |
+| 微信 / 数字分身 | `xming521/WeClone` | [#230](https://github.com/xming521/WeClone/issues/230) |
+| 微信 / Agent 数据层 | `leecyno1/wechat-chatlog-analysis` | [#2](https://github.com/leecyno1/wechat-chatlog-analysis/issues/2) |
+| 微信 / 联系人记忆 | `byteD-x/wechat-bot` | [#3](https://github.com/byteD-x/wechat-bot/issues/3) |
+| 微信 / 个性化回复 | `PW970/Auto_reply` | [#1](https://github.com/PW970/Auto_reply/issues/1) |
+| 微信 / 关系策略 | `chaojidaniuma/junshi-assistant` | [#1](https://github.com/chaojidaniuma/junshi-assistant/issues/1) |
+| 微信 / 证据分析 | `amy-77/Wechat-Rewind` | [#1](https://github.com/amy-77/Wechat-Rewind/issues/1) |
+| 微信 / Persona RAG | `HIT-JimmyXiao/Distill_myself_RAG-Skill` | [#1](https://github.com/HIT-JimmyXiao/Distill_myself_RAG-Skill/issues/1) |
+| 微信 / 数据治理 | `Sunnybay1994/wechat_database_governance` | [#1](https://github.com/Sunnybay1994/wechat_database_governance/issues/1) |
+| 闲鱼 / 安全 Agent | `falses00/Falses-Goofish-GuardAgent` | [#1](https://github.com/falses00/Falses-Goofish-GuardAgent/issues/1) |
+| 跨平台 / 身份图谱 | `AbyssRow/ChatArchive` | [#1](https://github.com/AbyssRow/ChatArchive/issues/1) |
+| 微信 / 联系人 Persona | `aiyufan3/wechat-hermes-bot` | [#1](https://github.com/aiyufan3/wechat-hermes-bot/issues/1) |
+| 微信 / MCP 与知识库 | `zhuobichen/weflow-cli` | [#4](https://github.com/zhuobichen/weflow-cli/issues/4) |
+| 微信 / 实时分析 | `jiankujidu/WeLine` | [#7](https://github.com/jiankujidu/WeLine/issues/7) |
+| 微信 / 归一化导出 | `Mervyn620/wechat-record-kit` | [#1](https://github.com/Mervyn620/wechat-record-kit/issues/1) |
+| 微信 / 导出与回复 | `xjin6/wechat-rune` | [#1](https://github.com/xjin6/wechat-rune/issues/1) |
+| 微信 / 严格只读 MCP | `Igor-Xu/wechat-local-platform` | [#1](https://github.com/Igor-Xu/wechat-local-platform/issues/1) |
+| 微信 / 建议与执行 | `2933684073/wechat-decrypt-contributors` | [#4](https://github.com/2933684073/wechat-decrypt-contributors/issues/4) |
+| 微信 / 解密 MCP | `328336690/wechat-decrypt` | [#4](https://github.com/328336690/wechat-decrypt/issues/4) |
+| 微信 / RPA SDK | `scottfly189/WeChatAuto.SDK` | [#4](https://github.com/scottfly189/WeChatAuto.SDK/issues/4) |
+| 微信 / 读取与 UI 执行 | `fanyuantaier/wechatauto-replica` | [#17](https://github.com/fanyuantaier/wechatauto-replica/issues/17) |
+| 微信 / 桌面 MCP | `Wirkflow/wechat-desktop-mcp` | [#1](https://github.com/Wirkflow/wechat-desktop-mcp/issues/1) |
+| 微信 / 多账号 Copilot | `gih10012/wechatcopilot` | [#4](https://github.com/gih10012/wechatcopilot/issues/4) |
+| 企业微信 / 官方 CLI | `WecomTeam/wecom-cli` | [#122](https://github.com/WecomTeam/wecom-cli/issues/122) |
+| 小红书 / Skill | `DeliciousBuding/xiaohongshu-skill` | [#15](https://github.com/DeliciousBuding/xiaohongshu-skill/issues/15) |
+| 小红书 / 评论回复 | `lee890720/xhs-auto-reply-mac` | [#1](https://github.com/lee890720/xhs-auto-reply-mac/issues/1) |
+| 小红书 / 私信回复 | `sonny2handsome/xhs-ai-reply` | [#1](https://github.com/sonny2handsome/xhs-ai-reply/issues/1) |
+| 小红书 / 证据归档 | `ChanTso/rednote-archivist` | [#4](https://github.com/ChanTso/rednote-archivist/issues/4) |
+| 闲鱼 / 自动回复上游 | `zhinianboke/xianyu-auto-reply` | [#307](https://github.com/zhinianboke/xianyu-auto-reply/issues/307) |
+| 闲鱼 / 回复过滤 | `GuDong2003/xianyu-auto-reply-fix` | [#113](https://github.com/GuDong2003/xianyu-auto-reply-fix/issues/113) |
+| 闲鱼 / 多账号运营 | `Christ9038/Ydisks-Xianyu-Helper` | [#19](https://github.com/Christ9038/Ydisks-Xianyu-Helper/issues/19) |
+| 闲鱼 / 可恢复执行 | `Evvvvvvvan/XianYuSmart` | [#28](https://github.com/Evvvvvvvan/XianYuSmart/issues/28) |
+| 闲鱼 / RAG 客服 | `dameng2026/xianyu-pilot` | [#38](https://github.com/dameng2026/xianyu-pilot/issues/38) |
+| 钉钉 / 官方工作台 CLI | `DingTalk-Real-AI/dingtalk-workspace-cli` | [#1168](https://github.com/DingTalk-Real-AI/dingtalk-workspace-cli/issues/1168) |
+| 钉钉 / 官方 Agent 通道 | `DingTalk-Real-AI/dingtalk-openclaw-connector` | [#654](https://github.com/DingTalk-Real-AI/dingtalk-openclaw-connector/issues/654) |
+| 钉钉 / Agent 通道 | `soimy/openclaw-channel-dingtalk` | [#602](https://github.com/soimy/openclaw-channel-dingtalk/issues/602) |
+| 钉钉 / 会话与审批 | `ttmouse/dsh-dingtalk-channel` | [#1](https://github.com/ttmouse/dsh-dingtalk-channel/issues/1) |
+| 飞书 / 持久会话 | `JunguangJiang/dsh-lark-channel` | [#1](https://github.com/JunguangJiang/dsh-lark-channel/issues/1) |
+| 飞书 / Thread 路由 | `tkwkeven/dsh-lark` | [#1](https://github.com/tkwkeven/dsh-lark/issues/1) |
+| 飞书 / 一次性审批 | `srchengtao2025/dsh-feishu-channel` | [#1](https://github.com/srchengtao2025/dsh-feishu-channel/issues/1) |
+| 多企业 IM / 身份会话 | `sosojust/dsh-messge-channels` | [#1](https://github.com/sosojust/dsh-messge-channels/issues/1) |
+| 跨平台 IM / AI Agent | `wangrongding/wechat-bot` | [#310](https://github.com/wangrongding/wechat-bot/issues/310) |
+| 跨平台 / 长期记忆 | `while-coder/sbot` | [#3](https://github.com/while-coder/sbot/issues/3) |
+| 跨平台 / Agent Harness | `zhayujie/CowAgent` | [#3081](https://github.com/zhayujie/CowAgent/issues/3081) |
+| 跨平台 / 多 Agent | `DemonDamon/AgenticX` | [#48](https://github.com/DemonDamon/AgenticX/issues/48) |
+| 跨平台 / 消息桥 | `chenhg5/cc-connect` | [#1759](https://github.com/chenhg5/cc-connect/issues/1759) |
+
 ## 8. 发布顺序与约束
 
 1. 先发布第一批六封定制 Issue，不使用同文群发。
