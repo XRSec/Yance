@@ -105,7 +105,7 @@ language: zh-CN
 | Profile Snapshot | 周/月/重大事件的人物或关系快照 |
 | User Correction | 用户对人物关联、身份、事实和画像的明确纠正 |
 
-跨平台人物合并由 AI 提议、用户确认。合并保留各平台身份，不把昵称相似自动当作同一个人。
+Person 是人物层，Platform Identity 是账号层，Relationship 与 Persona 是场景层。使用者和联系人都可以各自拥有多个 Platform Identity；同一个联系人还可能在不同关系或业务场景中使用不同 Persona。跨平台人物合并由 AI 提议、用户确认。合并保留各平台身份，不把昵称相似自动当作同一个人；账号共用或主体不明时保持分离并标记未知。
 
 ## 4. 双时间
 
