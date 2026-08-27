@@ -18,6 +18,8 @@ cua-driver permissions status --json
 
 ## 命令
 
+以下历史命令的相对路径仅在仓库的 `old/` 目录作为当前工作目录时成立；它们不是现行 quick start。
+
 ```bash
 # 列出 Cua Driver 可见的 App
 node scripts/cua-driver-wechat.mjs list-apps
@@ -112,4 +114,4 @@ Accessibility 无法可靠判断聊天气泡方向，因此 `speaker` 保持为 
 
 脚本在任何滚动前拒绝公众号和非标准聊天，并在每次动作后复核聊天标题和消息列表。整个生产流程不会输入聊天正文、点击发送、按 Return、写剪贴板、上传文件、自动发送消息或调用 LLM。
 
-详细微信 UI 证据和仍未验证的边界见 `scripts/WECHAT_COMPUTER_USE_FINDINGS.md`。
+本文档引用的相对脚本路径以 `old/` 为当前工作目录；归档快照中没有独立的 `scripts/WECHAT_COMPUTER_USE_FINDINGS.md`，因此不能把该文件描述为现存证据。

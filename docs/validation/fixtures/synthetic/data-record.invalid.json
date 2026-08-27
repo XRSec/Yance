@@ -1,0 +1,18 @@
+{
+  "record_id": "record-synthetic-0002",
+  "kind": "DIAGNOSIS",
+  "subject_ref": "test-user-a@example.invalid",
+  "value": {},
+  "valid_time": {
+    "from": "not-a-time",
+    "to": null
+  },
+  "recorded_at": "2026-08-27T00:00:00Z",
+  "status": "ACTIVE",
+  "source_refs": [],
+  "derived_by": null,
+  "retention": {
+    "class": "FOREVER",
+    "delete_after": null
+  }
+}

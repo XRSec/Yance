@@ -1,0 +1,37 @@
+name: 文档问题
+description: 报告事实错误、断链、来源或文档治理问题
+title: "[Docs] "
+labels: ["documentation"]
+body:
+  - type: markdown
+    attributes:
+      value: "安全漏洞不得公开提交；请使用 GitHub Private Vulnerability Reporting。"
+  - type: input
+    id: path
+    attributes:
+      label: 文档路径与 anchor
+    validations:
+      required: true
+  - type: textarea
+    id: current
+    attributes:
+      label: 当前内容与可复现证据
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: 建议修正
+    validations:
+      required: true
+  - type: textarea
+    id: sources
+    attributes:
+      label: 官方或原始来源
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: 公开披露确认
+      options:
+        - label: 此 Issue 不含漏洞、凭据、真实聊天或个人信息
+          required: true

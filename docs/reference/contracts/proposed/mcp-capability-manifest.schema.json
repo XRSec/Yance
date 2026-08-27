@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.yance.invalid/proposed/mcp-capability-manifest.schema.json",
+  "title": "PROPOSED MCP Capability Manifest",
+  "description": "规划期能力候选清单。candidate_id 可随验证变化，不构成冻结的公开命名空间或已实现能力。",
+  "type": "object",
+  "required": ["manifest_version", "status", "connector", "tools", "capabilities", "provenance", "last_reviewed"],
+  "additionalProperties": false,
+  "properties": {
+    "manifest_version": {"type": "string", "description": "本草案实例格式版本，不是 Yance 发布版本。", "minLength": 1},
+    "status": {"type": "string", "description": "清单只能表达提案或未测试状态。", "enum": ["PROPOSED", "UNTESTED"]},
+    "connector": {
+      "type": "object",
+      "description": "产生原始工具目录的精确连接器身份。",
+      "required": ["id", "version", "mcp_protocol", "transport"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {"type": "string", "description": "宿主分配的连接器 ID。", "minLength": 1},
+        "version": {"type": "string", "description": "连接器自报或构建版本。", "minLength": 1},
+        "mcp_protocol": {"type": "string", "description": "观察到的 MCP 协议版本。", "minLength": 1},
+        "transport": {"type": "string", "description": "连接方式。", "enum": ["stdio", "streamable-http", "other"]}
+      }
+    },
+    "tools": {
+      "type": "array",
+      "description": "实际发现的工具及其输入 schema hash。",
+      "items": {
+        "type": "object",
+        "required": ["name", "input_schema_hash"],
+        "additionalProperties": false,
+        "properties": {
+          "name": {"type": "string", "description": "连接器本地工具名。", "minLength": 1},
+          "input_schema_hash": {"type": "string", "description": "带算法前缀的输入 schema 摘要。", "pattern": "^sha256:[0-9a-f]{64}$"}
+        }
+      }
+    },
+    "capabilities": {
+      "type": "array",
+      "description": "尚待独立验证的标准能力候选。",
+      "items": {
+        "type": "object",
+        "required": ["candidate_id", "tool_ref", "risk_level", "data_scopes", "side_effects", "verification", "idempotency", "validation_status"],
+        "additionalProperties": false,
+        "properties": {
+          "candidate_id": {"type": "string", "description": "可变候选 ID；不冻结公开 namespace。", "minLength": 1},
+          "tool_ref": {"type": "string", "description": "必须匹配 tools 中某个 name；跨字段关系由语义检查验证。", "minLength": 1},
+          "risk_level": {"type": "string", "description": "宿主评定权限等级。", "enum": ["P0", "P1", "P2", "P3", "P4"]},
+          "data_scopes": {"type": "array", "description": "能力可接触的数据范围。", "items": {"type": "string", "minLength": 1}},
+          "side_effects": {"type": "boolean", "description": "是否可能产生外部副作用。"},
+          "verification": {"type": "string", "description": "结果核验方法或 UNSPECIFIED。", "minLength": 1},
+          "idempotency": {"type": "string", "description": "幂等语义。", "enum": ["SUPPORTED", "NOT_SUPPORTED", "UNSPECIFIED"]},
+          "validation_status": {"type": "string", "description": "自报与独立验证必须分开。", "enum": ["SELF_CLAIM", "UNTESTED", "VERIFIED"]}
+        }
+      }
+    },
+    "provenance": {"type": "string", "description": "工具发现记录或合成 fixture 来源。", "minLength": 1},
+    "last_reviewed": {"type": "string", "description": "最后复核日期。", "format": "date"}
+  }
+}

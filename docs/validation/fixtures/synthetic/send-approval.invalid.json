@@ -1,0 +1,25 @@
+{
+  "status": "PROPOSED",
+  "approval": {
+    "id": "approval-test-0002",
+    "approved_at": "2026-08-27T00:00:00Z",
+    "method": "implicit"
+  },
+  "payload": {
+    "action": "message.send",
+    "actor": "test-user-a@example.invalid",
+    "target": "test-user-b@example.invalid",
+    "body": "deliberately invalid synthetic fixture",
+    "attachments": [],
+    "connector": "connector.synthetic.invalid@0.0.0-test",
+    "tool": "send_synthetic_message",
+    "schema_hash": "not-a-hash",
+    "expires_at": "2026-08-27T00:05:00Z",
+    "nonce": "short"
+  },
+  "binding": {
+    "canonicalization": "RFC8785",
+    "algorithm": "SHA-256",
+    "digest": "not-a-hash"
+  }
+}

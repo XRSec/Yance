@@ -1,0 +1,25 @@
+{
+  "status": "PROPOSED",
+  "approval": {
+    "id": "approval-test-0001",
+    "approved_at": "2026-08-27T00:00:00Z",
+    "method": "explicit-ui-confirmation"
+  },
+  "payload": {
+    "action": "message.send",
+    "actor": "test-user-a@example.invalid",
+    "target": "test-user-b@example.invalid",
+    "body": "这是合成测试正文，不来自真实聊天。",
+    "attachments": [],
+    "connector": "connector.synthetic.invalid@0.0.0-test",
+    "tool": "send_synthetic_message",
+    "schema_hash": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+    "expires_at": "2026-08-27T00:05:00Z",
+    "nonce": "synthetic-nonce-0001"
+  },
+  "binding": {
+    "canonicalization": "RFC8785",
+    "algorithm": "SHA-256",
+    "digest": "sha256:2222222222222222222222222222222222222222222222222222222222222222"
+  }
+}

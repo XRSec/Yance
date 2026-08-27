@@ -1,5 +1,9 @@
 # Yance（言策）Phase 0 技术决策报告
 
+> **归档状态：ARCHIVED / 停止维护**
+>
+> 本文仅记录历史 Phase 0 方案；文中的“Go”“产品主线”、API 与技术选型均不代表当前 Yance 的决策、实现或支持承诺。当前事实源见 [Yance 文档](../../docs/README.md)，归档规则见 [历史实现说明](../README.md)。
+
 > macOS 主脑、Android 遥控器的社交智能架构  
 > 调研基准：2026-08-27  
 > 方法：项目仓库与历史会话核验、公开资料检索、ChatGPT Deep Research Heavy（会话 `6a8f6fa4-9e4c-83ee-ae1e-7afb4685ff4b`）

@@ -1,0 +1,38 @@
+name: 架构提案
+description: 提议修改规划中的架构边界或决策
+title: "[Architecture] "
+labels: ["architecture"]
+body:
+  - type: markdown
+    attributes:
+      value: "项目处于 planning-only；不要把提案描述为已实现 API。安全漏洞请私密报告。"
+  - type: textarea
+    id: problem
+    attributes:
+      label: 问题与约束
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: 提案
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: 替代方案与取舍
+    validations:
+      required: true
+  - type: textarea
+    id: decisions
+    attributes:
+      label: 影响的 D/OQ 编号与文档
+    validations:
+      required: true
+  - type: textarea
+    id: validation
+    attributes:
+      label: 验证与回滚方式
+    validations:
+      required: true

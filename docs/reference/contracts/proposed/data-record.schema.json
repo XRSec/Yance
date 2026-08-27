@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.yance.invalid/proposed/data-record.schema.json",
+  "title": "PROPOSED Data Record",
+  "description": "规划期双时间数据记录，用于区分事实、观察和派生状态；不表示数据库或公开 API 已确定。",
+  "type": "object",
+  "required": ["record_id", "kind", "subject_ref", "value", "valid_time", "recorded_at", "status", "source_refs", "derived_by", "retention"],
+  "additionalProperties": false,
+  "properties": {
+    "record_id": {"type": "string", "description": "记录的本地稳定 ID。", "minLength": 1},
+    "kind": {"type": "string", "description": "数据语义类别。", "enum": ["FACT", "OBSERVATION", "DERIVED_STATE", "USER_CORRECTION"]},
+    "subject_ref": {"type": "string", "description": "主体的假名化引用。", "minLength": 1},
+    "value": {"description": "结构化值；不得隐式携带不必要的聊天原文。", "type": ["object", "array", "string", "number", "boolean", "null"]},
+    "valid_time": {
+      "type": "object",
+      "description": "现实中有效的时间范围，与 recorded_at 分离。",
+      "required": ["from", "to"],
+      "additionalProperties": false,
+      "properties": {
+        "from": {"type": "string", "description": "有效期起点。", "format": "date-time"},
+        "to": {"type": ["string", "null"], "description": "有效期终点；null 表示尚未观察到终点。", "format": "date-time"}
+      }
+    },
+    "recorded_at": {"type": "string", "description": "系统得知、抽取或更正该数据的时间。", "format": "date-time"},
+    "status": {"type": "string", "description": "记录是否仍可用于当前推理。", "enum": ["ACTIVE", "CONFLICTED", "SUPERSEDED", "DELETED"]},
+    "source_refs": {"type": "array", "description": "来源 ID；不要求复制正文。", "items": {"type": "string", "minLength": 1}},
+    "derived_by": {"type": ["string", "null"], "description": "派生处理版本；原始或用户纠正记录可为 null。"},
+    "retention": {
+      "type": "object",
+      "description": "保留与删除状态，不构成尚未决定的 release policy。",
+      "required": ["class", "delete_after"],
+      "additionalProperties": false,
+      "properties": {
+        "class": {"type": "string", "description": "数据最小化类别。", "enum": ["REFERENCE", "DERIVED", "EPHEMERAL"]},
+        "delete_after": {"type": ["string", "null"], "description": "计划物理删除时间；UNSPECIFIED 时用 null。", "format": "date-time"}
+      }
+    }
+  }
+}

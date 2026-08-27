@@ -1,0 +1,30 @@
+{
+  "manifest_version": "0-proposed",
+  "status": "UNTESTED",
+  "connector": {
+    "id": "connector.synthetic.invalid",
+    "version": "0.0.0-test",
+    "mcp_protocol": "2025-11-25",
+    "transport": "stdio"
+  },
+  "tools": [
+    {
+      "name": "read_synthetic_conversation",
+      "input_schema_hash": "sha256:0000000000000000000000000000000000000000000000000000000000000000"
+    }
+  ],
+  "capabilities": [
+    {
+      "candidate_id": "candidate.conversation.read.synthetic",
+      "tool_ref": "read_synthetic_conversation",
+      "risk_level": "P1",
+      "data_scopes": ["synthetic-conversation"],
+      "side_effects": false,
+      "verification": "synthetic fixture comparison",
+      "idempotency": "SUPPORTED",
+      "validation_status": "UNTESTED"
+    }
+  ],
+  "provenance": "anonymous synthetic fixture; no real account or chat",
+  "last_reviewed": "2026-08-27"
+}

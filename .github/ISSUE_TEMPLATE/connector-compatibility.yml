@@ -1,0 +1,47 @@
+name: 连接器兼容性报告
+description: 提交指定版本 connector 的可复现实测结果
+title: "[Connector] "
+labels: ["connector-compatibility"]
+body:
+  - type: markdown
+    attributes:
+      value: >-
+        请脱敏；不得提交 Cookie、token、真实聊天或漏洞细节。
+        漏洞请使用 Private Vulnerability Reporting。
+  - type: input
+    id: connector
+    attributes:
+      label: Connector ID、来源和精确版本
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: MCP 协议、transport、系统与账号类型
+    validations:
+      required: true
+  - type: input
+    id: capability
+    attributes:
+      label: Candidate capability 与 schema hash
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: 匿名 fixture、步骤与预期
+    validations:
+      required: true
+  - type: dropdown
+    id: result
+    attributes:
+      label: 结果
+      options: ["PASS", "FAIL", "UNTESTED"]
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: 脱敏证据与结果核验方式
+    validations:
+      required: true

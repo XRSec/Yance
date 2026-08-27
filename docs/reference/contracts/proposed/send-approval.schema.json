@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.yance.invalid/proposed/send-approval.schema.json",
+  "title": "PROPOSED Immutable Send Approval",
+  "description": "规划期发送批准记录。执行前必须按 canonicalization 重算整个 payload 的 digest；任一字段变化、过期或 digest 不匹配都使批准失效并要求重新确认。",
+  "type": "object",
+  "required": ["status", "approval", "payload", "binding"],
+  "additionalProperties": false,
+  "properties": {
+    "status": {"type": "string", "description": "该契约尚未冻结。", "const": "PROPOSED"},
+    "approval": {
+      "type": "object",
+      "description": "用户当次明确批准的可追踪记录。",
+      "required": ["id", "approved_at", "method"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {"type": "string", "description": "虚构或系统生成的批准 ID。", "minLength": 1},
+        "approved_at": {"type": "string", "description": "确认发生时间。", "format": "date-time"},
+        "method": {"type": "string", "description": "可信界面中的确认方式。", "enum": ["explicit-ui-confirmation"]}
+      }
+    },
+    "payload": {
+      "type": "object",
+      "description": "确认后不可变的完整待执行载荷；实现不得在 digest 外另取动作参数。",
+      "required": ["action", "actor", "target", "body", "attachments", "connector", "tool", "schema_hash", "expires_at", "nonce"],
+      "additionalProperties": false,
+      "properties": {
+        "action": {"type": "string", "description": "批准的精确动作。", "enum": ["draft.write", "message.send"]},
+        "actor": {"type": "string", "description": "发送账号或身份引用。", "minLength": 1},
+        "target": {"type": "string", "description": "精确联系人或群聊引用。", "minLength": 1},
+        "body": {"type": "string", "description": "完整最终正文，可为空但不可省略。"},
+        "attachments": {"type": "array", "description": "附件内容摘要列表。", "items": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"}},
+        "connector": {"type": "string", "description": "精确连接器 ID 与版本引用。", "minLength": 1},
+        "tool": {"type": "string", "description": "实际执行工具名。", "minLength": 1},
+        "schema_hash": {"type": "string", "description": "确认时工具输入 schema 摘要。", "pattern": "^sha256:[0-9a-f]{64}$"},
+        "expires_at": {"type": "string", "description": "批准失效时间。", "format": "date-time"},
+        "nonce": {"type": "string", "description": "防止批准被重复使用的唯一随机值。", "minLength": 16}
+      }
+    },
+    "binding": {
+      "type": "object",
+      "description": "把批准不可变地绑定到 payload 的规则。",
+      "required": ["canonicalization", "algorithm", "digest"],
+      "additionalProperties": false,
+      "properties": {
+        "canonicalization": {"type": "string", "description": "摘要前规范化方法。", "const": "RFC8785"},
+        "algorithm": {"type": "string", "description": "摘要算法。", "const": "SHA-256"},
+        "digest": {"type": "string", "description": "仅对 payload 的 RFC 8785 表示计算的摘要。", "pattern": "^sha256:[0-9a-f]{64}$"}
+      }
+    }
+  }
+}

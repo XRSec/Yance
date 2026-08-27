@@ -14,7 +14,7 @@
 - Default: read-only observation. Writing to input boxes or clicking send requires explicit user action.
 - Never auto-send messages. Suggestions are displayed; user confirms.
 - Chat content stays on the local network (macOS ↔ Android). No cloud relay in v1.
-- SQLite database uses file-level encryption via macOS Keychain-derived key.
+- 历史设计目标曾计划使用 SQLCipher/Keychain 做本地加密；当前归档快照证据不足，不能声称 SQLite 文件已加密。
 
 ## Verification
 

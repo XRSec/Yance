@@ -1,0 +1,18 @@
+{
+  "record_id": "record-synthetic-0001",
+  "kind": "USER_CORRECTION",
+  "subject_ref": "test-user-a@example.invalid",
+  "value": {"preference": "合成偏好"},
+  "valid_time": {
+    "from": "2026-08-01T00:00:00Z",
+    "to": null
+  },
+  "recorded_at": "2026-08-27T00:00:00Z",
+  "status": "ACTIVE",
+  "source_refs": ["source-synthetic-0001"],
+  "derived_by": null,
+  "retention": {
+    "class": "DERIVED",
+    "delete_after": null
+  }
+}

@@ -1,0 +1,10 @@
+cache = true
+max_cache_age = "1d"
+accept = [200, 206, 429]
+exclude_path = ["old"]
+exclude = [
+  "https://schemas.yance.invalid/.*",
+  "https?://[^/]*\\.invalid/.*",
+  "http://localhost.*",
+  "http://127\\.0\\.0\\.1.*"
+]

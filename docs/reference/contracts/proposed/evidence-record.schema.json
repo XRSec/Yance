@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.yance.invalid/proposed/evidence-record.schema.json",
+  "title": "PROPOSED Evidence Record",
+  "description": "规划期证据边记录，将来源与数据记录关联；不复制真实聊天正文，也不表示证据存储 API 已冻结。",
+  "type": "object",
+  "required": ["evidence_id", "target_record_id", "relation", "source_ref", "observed_at", "recorded_at", "content_hash", "access_state"],
+  "additionalProperties": false,
+  "properties": {
+    "evidence_id": {"type": "string", "description": "证据边 ID。", "minLength": 1},
+    "target_record_id": {"type": "string", "description": "被支持、反对、更正或失效的数据记录 ID。", "minLength": 1},
+    "relation": {"type": "string", "description": "来源与目标记录的关系。", "enum": ["SUPPORTS", "CONTRADICTS", "CORRECTS", "INVALIDATES"]},
+    "source_ref": {"type": "string", "description": "原平台或用户指定来源中的假名化引用。", "minLength": 1},
+    "observed_at": {"type": "string", "description": "来源内容被观察到的时间。", "format": "date-time"},
+    "recorded_at": {"type": "string", "description": "证据边写入系统的时间。", "format": "date-time"},
+    "content_hash": {"type": "string", "description": "用于完整性核验的来源内容摘要，不是正文。", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "access_state": {"type": "string", "description": "来源当前是否可按引用重新核验。", "enum": ["AVAILABLE", "UNAVAILABLE", "DELETED", "UNSPECIFIED"]}
+  }
+}

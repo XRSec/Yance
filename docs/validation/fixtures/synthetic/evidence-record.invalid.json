@@ -1,0 +1,10 @@
+{
+  "evidence_id": "evidence-synthetic-0002",
+  "target_record_id": "record-synthetic-0001",
+  "relation": "PROVES_PERSONALITY",
+  "source_ref": "source-synthetic-0002",
+  "observed_at": "yesterday",
+  "recorded_at": "2026-08-27T00:00:00Z",
+  "content_hash": "raw-chat-is-not-allowed",
+  "access_state": "AVAILABLE"
+}

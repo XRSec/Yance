@@ -1,0 +1,14 @@
+{
+  "manifest_version": "0-proposed",
+  "status": "IMPLEMENTED",
+  "connector": {
+    "id": "connector.synthetic.invalid",
+    "version": "0.0.0-test",
+    "mcp_protocol": "2025-11-25",
+    "transport": "stdio"
+  },
+  "tools": [],
+  "capabilities": [],
+  "provenance": "deliberately invalid synthetic fixture",
+  "last_reviewed": "2026-08-27"
+}
