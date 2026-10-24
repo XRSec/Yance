@@ -3,7 +3,7 @@ title: "10. 决策记录与开放问题"
 status: planning
 audience: "所有规划参与者"
 owner: UNSPECIFIED
-last_reviewed: 2026-08-27
+last_reviewed: 2026-10-24
 source_of_truth: true
 language: zh-CN
 ---
@@ -14,7 +14,7 @@ language: zh-CN
 
 | 编号 | 决策 | 结果 |
 | --- | --- | --- |
-| D-001 | 项目工作形态 | 当前完全以 Markdown 规划，不沿用现有代码实现 |
+| D-001 | 项目工作形态 | 历史决策：当时完全以 Markdown 规划；已由 D-034 替代 |
 | D-002 | 大脑宿主 | 首版运行在 macOS 本地主机 |
 | D-003 | Android 定位 | 遥控器和决策界面，主页为待回复收件箱 |
 | D-004 | 目标用户 | 个人沟通与销售场景并行规划，纵向闭环交付 |
@@ -47,6 +47,13 @@ language: zh-CN
 | D-031 | 自动回复 | 达到验证门槛后，用户可对明确身份、账号、对象和场景建立可撤销授权；替代 D-018 的永久逐次确认解释 |
 | D-032 | 身份模型 | 使用者与联系人都可拥有多个账号、关系身份和场景 persona |
 | D-033 | 高阶识别 | 探索操控性沟通信号、话外意图、机会与多方策略，但必须展示证据、反证和不确定性 |
+| D-034 | 项目进入实现原型 | 开始维护可运行代码和自动化测试，替代 D-001 的 planning-only 工作形态；仍不代表正式发行 |
+| D-035 | Server App 框架 | Server Core 优先采用 Electron + Node.js + TypeScript，使 macOS 首版与后续 Windows 适配共享核心运行时 |
+| D-036 | MCP 与 Connector 关系 | 每个注册 MCP 必须且只能自动关联一个 Connector；即使 MCP 可直接使用也不允许 Brain 绕过 Connector |
+| D-037 | Connector Adapter | 默认 passthrough；平台特殊逻辑使用用户定义 Node.js Adapter，负责组合调用、标准化、会话定位和事件/轮询适配 |
+| D-038 | MCP transport 原型 | Server Core 先支持 stdio、Streamable HTTP 和兼容性 SSE，并通过真实 tools/list 保存 MCP tool 目录 |
+| D-039 | 实时消息兜底 | Connector 没有 push/event 时允许 tool polling；UI 默认 5 秒，具体真实平台频率由 Connector 风险与增量机制决定 |
+| D-040 | 原型 Registry 数据库 | 使用普通可直接检查的 SQLite 保存 MCP、Connector、Tool、Capability、Job 与 Event；这不冻结长期数据库，也不构成 secret vault |
 
 ## 2. 已解决的表面冲突
 
@@ -75,13 +82,15 @@ language: zh-CN
 这些判断由当前研究支持，但在实现前仍可调整：
 
 1. 稳定身份、时间、来源、冲突和索引采用关系型存储；变化快的画像内容使用 JSON。
-2. SQLite 是 macOS 本地首版候选，但尚未冻结。
+2. SQLite 已用于 Electron Server Core 原型 Registry；长期记忆数据库和正式发布存储方案仍未冻结。
 3. 不先引入图数据库、完整事件溯源框架或向量数据库。
 4. 工具身份绑定连接器 ID、版本、协议版本、工具名和 schema hash。
 5. MCP 脚本是受限声明式工作流，不是 AI 任意代码。
 6. P4 单次发送确认绑定 actor、目标、正文/附件 hash、连接器和有效期；未来自动回复使用独立授权契约，不能复用单次确认。
 7. 同平台、同账号只允许一个写连接器活动。
-8. 状态未知不自动重试发送。
+8. 执行结果显式区分 `CONFIRMED`、`UNCERTAIN` 与 `REJECTED`；状态 `UNCERTAIN` 时不自动重试发送，直接转入人工复核（`REVIEW_REQUIRED`）。
+9. 外部导入的联系人分层与 Persona 偏好固定作为 `DERIVED_STATE`，必须显式声明 `subject_role`，不以导入时间伪造 `valid_time`，且不自动获得任何执行或自动回复授权。
+10. 公开互动（如公开评论）与私密会话（如私聊）实行严格的记忆披露与权限隔离；风控挑战（验证码、登录失效、限流）与发送护栏（白名单、冷却、窗口上限、全局急停）必须在模型外强制执行。
 
 ## 4. 高优先级开放问题
 

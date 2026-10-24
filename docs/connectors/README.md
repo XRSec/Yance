@@ -3,7 +3,7 @@ title: "连接器文档"
 status: planning
 audience: "连接器与安全评审者"
 owner: UNSPECIFIED
-last_reviewed: 2026-08-27
+last_reviewed: 2026-08-28
 source_of_truth: true
 language: zh-CN
 ---
@@ -11,6 +11,7 @@ language: zh-CN
 # 连接器文档
 
 - [MCP 耦合层](mcp-coupling-layer.md)
+- [Connector Runtime 原型](connector-runtime.md)
 - [MCP 市场规划](mcp-marketplace.md)
 - [连接器兼容性](compatibility.md)
 

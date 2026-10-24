@@ -27,7 +27,7 @@ RFC3339_DATETIME_RE = re.compile(
 )
 LINK_RE = re.compile(r"(?<!!)\[[^\]]*\]\(([^)]+)\)")
 HEADING_RE = re.compile(r"^(#{1,6})\s+(.+?)\s*#*\s*$")
-ALLOWED_STATUS = {"planning", "proposed", "moved"}
+ALLOWED_STATUS = {"planning", "proposed", "prototype", "moved", "archive"}
 SCHEMA_KEYS = {
     "$schema", "$id", "title", "description", "type", "required",
     "additionalProperties", "properties", "items", "enum", "const",

@@ -23,6 +23,8 @@ wechat_export/
 **/.idea/
 **/DerivedData/
 **/dist/
+dist-electron/
+release/
 **/coverage/
 **/__pycache__/
 **/.pytest_cache/
@@ -39,3 +41,4 @@ wechat_export/
 .pi-lens/
 .DS_Store
 *.xcuserstate
+sopp-node-tools/

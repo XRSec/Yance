@@ -3,7 +3,7 @@ title: "03. 系统架构"
 status: planning
 audience: "架构参与者"
 owner: UNSPECIFIED
-last_reviewed: 2026-08-27
+last_reviewed: 2026-08-28
 source_of_truth: true
 language: zh-CN
 ---
@@ -12,7 +12,7 @@ language: zh-CN
 
 ## 1. 架构目标
 
-系统围绕一个原则设计：**macOS 上的大脑是思考与治理中心，Android 是用户决策界面，MCP 是可替换的身体。**
+系统围绕一个原则设计：**macOS 上的大脑是思考与治理中心，Android 是用户决策界面，MCP 是原始能力来源，Connector 是可替换的身体适配层。**
 
 大脑不依赖某个具体平台工具名，也不把平台采集逻辑写进自身。它只消费经过耦合层验证的标准能力。
 
@@ -32,11 +32,14 @@ macOS 本地大脑
   ├─ 回复策略与润色编排
   ├─ 可信确认与执行控制
   └─ MCP 耦合层
-       ├─ 连接器注册与能力目录
-       ├─ 能力级路由与冲突控制
-       ├─ 探索、试运行与脚本库
+       ├─ Connector Registry
+       ├─ Connector Runtime
+       │    ├─ passthrough Adapter
+       │    ├─ 用户 Node.js Adapter
+       │    └─ event / polling
+       ├─ Capability Mapping 与能力级路由
        ├─ 权限策略与审计
-       └─ MCP Clients ── 用户提供的平台/业务 MCP
+       └─ MCP Runtime ── 用户提供的平台/业务 MCP
 ```
 
 ## 3. 各层职责
@@ -110,7 +113,7 @@ Android 不成为第二套长期记忆或第二个模型运行中心。可保留
 
 ### 3.8 MCP 耦合层
 
-负责将不稳定、不同名的工具转成内部标准能力。详细规则见 [MCP 耦合层](../connectors/mcp-coupling-layer.md)。
+负责将不稳定、不同名的工具转成内部标准能力。每个注册 MCP 先形成唯一 Connector；Brain 不直接调用 MCP。Connector 可以直接 passthrough，也可以使用用户定义 Node.js Adapter 补齐会话定位、数据转换、轮询或事件接入。详细规则见 [MCP 耦合层](../connectors/mcp-coupling-layer.md)和[Connector Runtime 原型](../connectors/connector-runtime.md)。
 
 ## 4. 数据所有权与事实源
 

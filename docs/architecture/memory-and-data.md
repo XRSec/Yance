@@ -3,7 +3,7 @@ title: "05. 时序记忆与数据设计"
 status: planning
 audience: "架构与数据评审者"
 owner: UNSPECIFIED
-last_reviewed: 2026-08-27
+last_reviewed: 2026-10-24
 source_of_truth: true
 language: zh-CN
 ---
@@ -203,3 +203,12 @@ Person 是人物层，Platform Identity 是账号层，Relationship 与 Persona 
 - 新增断言无来源时不得固化；
 - 反证、否定、撤回和冲突不能在摘要中消失；
 - 定期从字段轨迹重建，而不是无限摘要套摘要。
+## 12. 外部画像、离线归档与证据交换边界
+
+结合生态协作评审（参见 [GitHub 生态合作进展](../outreach/github-collaboration-issues.md#9-社区回复进展与技术洞察截至-2026-10-24)），Yance 与外部 RAG、Persona 生成器及本地归档工具交换数据时遵循以下硬边界：
+
+1. **外部画像与分层归入派生状态**：外部导入的联系人分层（如 A/B tier）、风格标签（`style_notes`、`tone_hint`）只映射为 `DERIVED_STATE`，不得提权为已证实 `FACT` 或 `USER_CORRECTION`。保留生产方 `tier_namespace`，不把外部 tier 当作信任分或自动回复授权。
+2. **显式主体角色与场景隔离**：Persona 必须由生产方显式标注 `subject_role`（`self` / `contact` / `unknown`）及适用场景范围（`scope`），禁止从语气词猜测主体归属，防止单一场景风格污染全局关系。
+3. **禁止伪造双时间与静默补齐**：外部轻量数据缺少 `valid_time`、`recorded_at`、`derived_by` 等必填元数据时，严禁拿“导入时间”冒充“事实生效时间（`valid_time`）”；应保留在 sidecar 扩展结构中并显式报告回程转换的信息损失。
+4. **原文摘要隐私与不透明引用**：真实短消息的 `sha256` 原文摘要仍可能被字典猜测或跨数据集关联。公开契约测试只对合成样本计算 `content_hash`；真实数据跨工具交换使用每次导出独立的不透明随机引用 ID，ID 到本地文件/消息的解析表留在本地。携带 `source_refs` 不代表接收方天然具备 `AVAILABLE` 可访问性。
+5. **多模态离线归档与反向核验链**：针对私聊记录少但朋友圈、图片、语音转文字、引用回复丰富的联系人，本地归档来源应区分原图、缩略图与媒体缺失状态，并配套完整性摘要清单，确保用户可从 AI 结论沿 Evidence Link 一键回溯到人类可读归档（TXT / HTML / PDF / 原始媒体）的具体位置。

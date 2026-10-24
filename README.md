@@ -9,7 +9,7 @@ Yance 是一个由多个 MCP 连接器驱动的、**本地优先的个人关系�
 *A local-first relationship and communication intelligence brain that connects identities, context, memory, and controlled replies across messaging platforms.*
 
 > [!IMPORTANT]
-> Yance 当前处于 **planning-only** 阶段。本仓库已经包含产品、架构、安全边界、契约草案和验证计划，但还没有可安装发行版、受支持运行时或冻结的公开 API。下文描述的是已经确认的产品方向，不代表功能已经实现。详见[项目状态](docs/reference/project-status.md)。
+> Yance 已进入 **implementation prototype** 阶段。仓库现在包含可运行的 Electron + Node.js Server Core 原型，用于 MCP 注册、Connector Runtime、Capability Mapping、轮询任务和 SQLite 数据查看；仍然没有正式发行版、受支持版本或冻结的公开 API。产品大脑、Android 客户端和真实平台兼容性仍按规划逐步验证。详见[项目状态](docs/reference/project-status.md)。
 
 ## 它解决什么问题
 
@@ -111,6 +111,13 @@ Yance 不打算重复维护每个平台的解密、逆向、自动化或开放 A
   └─ 可选：填入草稿、发送并核验结果
                  │
                  ▼
+Connector Runtime
+  ├─ 每个 MCP 强制对应一个 Connector
+  ├─ passthrough 或用户自定义 Node.js Adapter
+  ├─ Tool → Yance Capability 映射
+  └─ 事件 / 轮询 / 数据标准化
+                 │
+                 ▼
 Yance 本地大脑（macOS）
   ├─ 跨平台人物与身份图谱
   ├─ 时序记忆、关系状态与证据
@@ -144,8 +151,10 @@ Yance 不试图取代聊天导出器、平台 MCP、AI 客服或数字分身项�
 | 产品定义、用户体验与系统架构 | `PLANNING` |
 | 身份、记忆、证据和连接器契约 | `PROPOSED` |
 | 匿名合成 fixture 与验证计划 | `PROPOSED` |
+| Electron Server Core / MCP Registry / Connector Runtime | `PROTOTYPE` |
+| SQLite Registry / Capability Mapping / Polling Scheduler | `PROTOTYPE` |
 | 真实连接器兼容性 | `UNTESTED` |
-| 可安装应用、受支持运行时、正式 API | `NOT IMPLEMENTED` |
+| 正式安装包、受支持运行时、冻结 API | `NOT RELEASED` |
 
 首个可验收闭环不会直接碰真实微信或闲鱼账号，而是使用受控测试 MCP 验证：读取一个待回复会话、识别身份、分层分析、生成三种策略、精确确认、测试发送和结果核验。之后再逐个验收真实平台连接器、关系记忆和受限自动回复。
 
@@ -162,8 +171,8 @@ Yance 不试图取代聊天导出器、平台 MCP、AI 客服或数字分身项�
 - 查看当前决定和未决问题：[决策与未决问题](docs/reference/decisions-and-open-questions.md)
 - 参与规划、契约或匿名测试材料：[贡献指南](CONTRIBUTING.md)
 
-当前仓库只接受规划文档、契约草案、匿名测试材料和文档治理改进。`old/` 保存停止维护的历史快照，不代表当前实现，也不是安装入口。
+当前仓库同时包含规划文档与早期 Server Core 实现。`src/`、`electron/` 和自动化测试属于活动实现；`old/` 保存停止维护的历史快照，不代表当前实现，也不是安装入口。
 
-owner、License、最低系统版本、正式 API、首个真实 connector、数据库、模型、发布政策和安全响应 SLA 仍为 **UNSPECIFIED**，仓库不会用推测填补这些决定。
+owner、License、最低受支持系统版本、正式 API、首个真实 connector、模型、发布政策和安全响应 SLA 仍为 **UNSPECIFIED**。原型阶段已选择普通 SQLite 作为 Server Registry 存储，但这不等于冻结长期数据库方案。
 
 安全问题请不要提交公开 Issue，请按[安全政策](SECURITY.md)私密报告。

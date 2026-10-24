@@ -3,7 +3,7 @@ title: "04. MCP 耦合层"
 status: planning
 audience: "连接器与安全评审者"
 owner: UNSPECIFIED
-last_reviewed: 2026-08-27
+last_reviewed: 2026-10-24
 source_of_truth: true
 language: zh-CN
 ---
@@ -20,10 +20,11 @@ MCP 能让大脑发现工具及其 JSON Schema，但不能替 Yance 回答这些
 - 一次试验成功后，如何安全地复用；
 - 工具升级或失效后，旧脚本是否仍可信；
 - 如何避免把所有工具定义和中间结果反复塞给模型。
+- MCP 没有实时事件时，谁负责轮询、cursor、会话定位和数据标准化。
 
-耦合层是 Yance 的核心差异：把“模型临时调用工具”变成“可发现、可验证、可批准、可复用、可撤销的能力”。
+耦合层是 Yance 的核心差异：把“模型临时调用工具”变成“可发现、可适配、可验证、可批准、可复用、可撤销的能力”。当前原型已增加强制 Connector Runtime：任何 MCP 都先经过 Connector，不允许 Brain 直接依赖具体 MCP tool。实现状态见 [Connector Runtime 原型](connector-runtime.md)。
 
-## 2. 两级能力目录
+## 2. 三层目录
 
 ### 2.1 原始工具目录
 
@@ -33,7 +34,20 @@ MCP 能让大脑发现工具及其 JSON Schema，但不能替 Yance 回答这些
 
 保存工具 schema、来源、账号范围、连接状态、最近测试、风险提示和变更记录。工具名只在自身服务器内有意义，不能作为全局身份。
 
-### 2.2 标准能力目录
+### 2.2 Connector Adapter
+
+每个 MCP 注册时必须生成唯一 Connector。Connector 可以是无需额外逻辑的 `passthrough`，也可以引用用户定义 Node.js Adapter。Adapter 负责补齐 MCP 本身没有表达的运行逻辑，例如：
+
+- 定位某个会话或联系人；
+- 多次 MCP 调用组合成一次业务操作；
+- 把平台返回转换成 Yance 内部结构；
+- MCP 无事件能力时进行 polling；
+- 使用平台允许的本地 watcher / event source 替代 polling；
+- 当平台实时监听事件缺少 `msg_id`、精确时间戳或完整正文时，结合历史拉取接口完成回填、去重与水位线排序。
+
+Adapter 是外部能力的适配层，不是 Brain 逻辑。真实 MCP tool 仍由 MCP Runtime 调用。
+
+### 2.3 标准能力目录
 
 规划使用可验证的内部 capability candidate；以下 ID 仅为示例，尚未冻结为正式或公开 API：
 
@@ -175,6 +189,15 @@ AI 只能把**真实执行成功的调用路径**整理为候选脚本。脚本�
 - 需要绕过平台限制。
 
 状态未知时不盲目重试发送。
+
+### 8.3 执行结果确定性、公开/私密隔离与模型外护栏
+
+结合多平台连接器实战反馈（见 [GitHub 生态合作进展](../outreach/github-collaboration-issues.md#9-社区回复进展与技术洞察截至-2026-10-24)），耦合层补充以下执行契约要求：
+
+1. **结果确定性三态（`CONFIRMED` / `UNCERTAIN` / `REJECTED`）**：许多连接器把“协议帧写出”或“UI 点击完成”直接返回成功，未核验服务端回包 `mid` 或上屏结果。耦合层必须将“确认送达/上屏（`CONFIRMED`）”与“已发出但结果未知（`UNCERTAIN`）”严格拆开；一旦出现 `UNCERTAIN`，状态机立即转入 `REVIEW_REQUIRED`（人工复核）并携带现场证据，严禁自动重发。
+2. **公开内容与私密会话越权隔离**：在小红书等兼具公开互动（笔记/评论）与私密沟通（私信）的平台上，Acting Persona、Platform Identity 与 Relationship Record 必须显式分离。公开评论动作绝不能静默继承私聊关系的记忆披露范围或发送权限，防止将私密上下文泄露到公开评论区。
+3. **风控与挑战显式状态化**：验证码（captcha）、登录态过期（expired login）、频控预警（rate risk）必须作为独立可检查状态返回给规划层，不得混作普通网络超时重试。
+4. **模型外硬护栏（Out-of-Model Guardrails）**：私聊白名单、联系人冷却时间、时间窗发送上限、敏感内容拦截、dry-run 与全局急停（kill switch）必须在 Connector Runtime / 宿主策略层强制执行，不能依赖提示词让模型自觉遵守。
 
 ## 9. MCP 市场关系
 

@@ -7,6 +7,9 @@ from scripts import docs_qa
 
 
 class FormatTests(unittest.TestCase):
+    def test_document_statuses_include_runtime_prototype(self) -> None:
+        self.assertIn("prototype", docs_qa.ALLOWED_STATUS)
+
     def test_rfc3339_date_is_strict(self) -> None:
         self.assertTrue(docs_qa.valid_format("2026-08-27", "date"))
         self.assertFalse(docs_qa.valid_format("20260827", "date"))

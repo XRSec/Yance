@@ -3,7 +3,7 @@ title: "GitHub 生态合作邀请候选与 Issue 草稿"
 status: planning
 audience: "项目维护者与生态合作参与者"
 owner: UNSPECIFIED
-last_reviewed: 2026-08-27
+last_reviewed: 2026-10-24
 source_of_truth: true
 language: zh-CN
 ---
@@ -582,3 +582,51 @@ yet-another-lark-mcp 将能力分为 Send-only、Interactive 和 Full，支持�
 4. 若维护者反馈不希望讨论、仓库用途不匹配或 Issue 区仅收 Bug，立即停止，不换措辞重复发送。
 5. 第二批根据第一批反馈调整；同一生态分支或上下游项目避免重复轰炸。
 6. 任何实际发布都是代表项目对外沟通，必须由项目负责人确认最终标题、正文和目标仓库。
+## 9. 社区回复进展与技术洞察（截至 2026-10-24）
+
+### 9.1 核心回复与协作状态总览
+
+截至 2026-10-24，已有 21 个 Issue 收到维护者或社区成员回复。按协作进展分为三类：
+
+| 仓库与 Issue | 维护者反馈核心态度 | 可落地的协作切入点 | 当前状态 |
+| --- | --- | --- | --- |
+| `HIT-JimmyXiao/Distill_myself_RAG-Skill` [#1](https://github.com/HIT-JimmyXiao/Distill_myself_RAG-Skill/issues/1) | 核查了双方最新代码与 Schema，提出 `exchange v0.1` 合成交换包草案及 5 条适配硬边界 | 在 Issue 内开展 Schema 评审与完全合成 fixture 对齐，不触碰真实私人数据 | OPEN（深度推进） |
+| `chenhg5/cc-connect` [#1759](https://github.com/chenhg5/cc-connect/issues/1759) | 认可身份、多场景关系与可审计分层；维护者已留直接联系方式希望深入讨论草案 | 补充《人物身份 × 多场景关系 × 审计日志抽象草案》并推进跨通道 Session 隔离对齐 | CLOSED（30 天自动锁闭，线下/重开跟进） |
+| `fancyboi999/goofish-cli` [#27](https://github.com/fancyboi999/goofish-cli/issues/27) | 明确专注稳定会话能力层、将大脑留给上游；欢迎提交匿名测试 fixture PR | 整理“历史回填 + 实时事件 + 发送确认”匿名 fixture PR 提交至对方 `tests/`，单开 Issue 讨论 `msg_id/ts` 与 ACK 状态 | OPEN（待提 PR） |
+| `julibeian/wechat-local-exporter` [#1](https://github.com/julibeian/wechat-local-exporter/issues/1) | 深度认同 `archive / evidence layer` 与“事实/解释/推断分离”，分享了 HTML+JSON+媒体+SHA256 离线归档架构 | 用合成/匿名数据验证“本地归档 → AI 判断 → 原始记录引用 → 反向定位原文/媒体”最小闭环 | OPEN（待发 Schema 对照） |
+| `Evvvvvvvan/XianYuSmart` [#28](https://github.com/Evvvvvvvan/XianYuSmart/issues/28) | 认同方向交集，建议优先统一“最小执行语义”（身份范围、事实引用、执行状态、结果确定性） | 提供最小 execution event / result schema 与匿名 fixture，对照消息发送、卡密交付、确认发货三场景 | OPEN（待发 Schema 对照） |
+| `2933684073/wechat-decrypt-contributors` [#4](https://github.com/2933684073/wechat-decrypt-contributors/issues/4) | 认可大脑与身体分离，强调优先稳定连接器边界、不可变批准绑定与模型外安全护栏 | 对齐桌面发送状态机、白名单/冷却/急停护栏以及 Windows 连接器与 macOS 大脑的跨机边界 | OPEN（待对齐状态机） |
+| `xpzouying/xiaohongshu-mcp` [#829](https://github.com/xpzouying/xiaohongshu-mcp/issues/829) | 认同公开笔记/评论与私信必须分层建模，风控挑战（验证码、登录过期、限流）应成为显式状态 | 对照公开/私密能力映射与 confirm-before-publish 匿名样例 | OPEN |
+| `monicahq/monica` [#7974](https://github.com/monicahq/monica/issues/7974) | 核心维护者确认新版 Monica 将提供完整官方 MCP、API、Webhook 及 WebMCP 支持 | 跟踪新版 Monica MCP Schema，作为外部个人 CRM 图谱连接器候选 | OPEN |
+| `a4001234567/yet-another-lark-mcp` [#1](https://github.com/a4001234567/yet-another-lark-mcp/issues/1) | 分享了基于本地代理的临时可控授权与飞书原生授权确认卡片设计思路 | 参考其分模块渐进权限与平台内确认卡片设计 | OPEN |
+| `fanyuantaier/wechatauto-replica` [#17](https://github.com/fanyuantaier/wechatauto-replica/issues/17) | 维护者表示精力有限，开放支持 Yance 直接通过独立 Adapter 或 AI 修改进行适配 | 由 Yance 侧编写独立 Adapter 并按需反哺轻量修复 PR | OPEN |
+| `ChatLab/ChatLab` [#433](https://github.com/ChatLab/ChatLab/issues/433) | 明确 ChatLab 标准格式完全开放、无需授权即可直接适配；人物关系与证据留给 Yance 上层 | 直接编写 ChatLab 格式单向/双向导入 Adapter，待 Yance 形成稳定用户反馈后再议联合原型 | CLOSED |
+| `zhayujie/CowAgent` [#3081](https://github.com/zhayujie/CowAgent/issues/3081) | 高度认可跨平台身份关联与带来源/反证的长期记忆思考；核心架构自建但会参考元数据思路 | 保持 Discussions 经验交流，不强求架构绑定 | CLOSED |
+
+此外，`WecomTeam/wecom-cli#122`、`AbyssRow/ChatArchive#1`、`DemonDamon/AgenticX#48`、`soimy/openclaw-channel-dingtalk#602`、`carlassmann/tilly#79` 等明确表示仅聚焦本仓库既定范围或暂不引入跨项目 Schema；按第 8 节约束，已尊重维护者意愿不再跟帖打扰。`Panther114/Weport#14` 经社区提醒为二次修改仓，后续需核实上游原作者。
+
+### 9.2 反哺 Yance 架构与契约的五大有益分享
+
+社区维护者从真实工程实践出发，给出了极具价值的架构反哺：
+
+1. **Persona 与联系人分层的可移植边界（来自 `Distill_myself_RAG-Skill#1`）**：
+   - **派生状态不得提权为事实**：外部导入的联系人分层（如 A/B tier）和表达偏好（`style_notes`、`tone_hint`）只能映射为 `DERIVED_STATE`，不能转为 `FACT` 或 `USER_CORRECTION`；更不能把分层枚举直接当作信任分或自动回复授权。
+   - **主体归属显式声明**：Persona 必须由生产方显式声明 `subject_role`（`self` / `contact` / `unknown`），严禁根据语气提示词猜测属于本人还是对方。
+   - **缺失元数据不静默补齐**：外部轻量数据缺少 `valid_time`、`recorded_at`、`derived_by` 时，严禁用“导入时间”冒充“事实生效时间”，应保留在 sidecar / 未映射对象中并明确报告信息损失。
+   - **原文 Hash 的隐私暴露风险**：短文本的真实 `sha256` 仍可能被字典猜测或跨数据集关联；公开交换 fixture 只对合成数据计算 hash，真实数据交换需采用每次导出独立的不透明随机 ID，解析表留在本地。
+
+2. **执行结果确定性三态与防盲目重试（来自 `XianYuSmart#28`、`goofish-cli#27`、`wechat-decrypt-contributors#4`）**：
+   - 真实连接器（WebSocket 写帧、桌面 UI 自动化）普遍存在“请求已发出但未拿到服务端 mid 回包或 UI 上屏确认”的中间态。
+   - 发送与履约结果必须区分 **`CONFIRMED`（已核验回执/上屏）、`UNCERTAIN`（已发出但结果未知）、`REJECTED`（明确失败/拒绝）**。
+   - 遇到 `UNCERTAIN` 时必须立即停止自动重试，携带上下文证据转入 `REVIEW_REQUIRED`（人工复核），防止重复发送或重复发货。
+
+3. **实时事件残缺与历史回填拼合（来自 `goofish-cli#27`）**：
+   - 许多平台的实时监听（watch / WS）推送的事件不含完整 `msg_id`、精确时间戳或完整正文，必须由 Connector Adapter 结合 `history` 接口回填去重，并在契约层明确 `at-least-once` 投递与排序水位线。
+
+4. **公开互动与私聊上下文的越权隔离、风控显式状态化（来自 `xiaohongshu-mcp#829`）**：
+   - 兼具公开内容（笔记/评论）与私密会话（私信）的平台，必须将 Acting Persona、Platform Identity 与 Relationship Record 分离；**公开评论动作绝不能静默继承私聊关系的记忆披露权限或自动执行授权**，防止将私密事实泄露到公域。
+   - 验证码（captcha）、登录失效（expired login）、频控（rate risk）必须作为显式状态返回，而非普通布尔失败。
+
+5. **多模态离线归档与反向证据核验链（来自 `wechat-local-exporter#1`）**：
+   - 长期关系分析除文字私聊外，强依赖图片、引用回复、合并转发、语音转文字及**朋友圈（补充低频私聊联系人的长期公开表达）**。
+   - 本地归档采用 `HTML（人类可读）+ JSON（机器处理）+ media/（区分原图/缩略图/缺失标记）+ SHA-256 清单` 结构，可支撑 Yance 实现从“AI 推断结论”一键反向定位到原始归档位置的可核验闭环。
